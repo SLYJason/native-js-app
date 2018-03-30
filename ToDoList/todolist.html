@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .header {
+        background-color: #f44336;
+        color: white;
+        width: 75%;
+        padding: 2rem;
+        text-align: center;
+    }
+    .searchbox {
+        display: flex;
+        justify-content: center;
+    }
+    input {
+        width: 70%;
+        height: 3rem;
+        border: 0;
+        outline: none;
+        font-size: 2rem;
+    }
+    button {
+        cursor: pointer;
+        background-color: lightblue;
+        width: 15%;
+        height: inherit;
+        font-size: 1.5rem;
+    }
+</style>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ToDo List</h1>
+            <div class="searchbox">
+                <input type="text" placeholder="Title">
+                <button>Add</button>
+            </div>
+        </header>
+    </div>
+</body>
+</html>
