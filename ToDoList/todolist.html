@@ -8,9 +8,11 @@
 <style>
     .container {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+
     .header {
         background-color: #f44336;
         color: white;
@@ -18,10 +20,12 @@
         padding: 2rem;
         text-align: center;
     }
+
     .searchbox {
         display: flex;
         justify-content: center;
     }
+
     input {
         width: 70%;
         height: 3rem;
@@ -29,12 +33,63 @@
         outline: none;
         font-size: 2rem;
     }
+
     button {
         cursor: pointer;
-        background-color: lightblue;
+        background: #d9d9d9;
         width: 15%;
         height: inherit;
         font-size: 1.5rem;
+    }
+
+    button:hover {
+        background-color: #bbbbbb;
+    }
+
+    ul {
+        display: block;
+        width: 100%;
+        text-align: center;
+        list-style-type: none;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li:nth-child(odd) {
+        background-color: #f9f9f9;
+        transition: .2s;
+    }
+
+    ul li:hover {
+        background-color: #515e70;
+    }
+
+    ul li {
+        display: inline-block;
+        line-height: 4rem;
+        width: 80%;
+        font-size: 2rem;
+        text-align: left;
+        animation: ;
+    }
+
+    ul li.checked {
+        background: #888888;
+        color: #ffffff;
+        text-decoration: line-through;
+    }
+
+    .close {
+        float: right;
+        width: 2rem;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 1rem;
+    }
+
+    .close:hover {
+        background-color: red;
     }
 </style>
 <body>
@@ -43,9 +98,60 @@
             <h1>ToDo List</h1>
             <div class="searchbox">
                 <input type="text" placeholder="Title">
-                <button>Add</button>
+                <button onclick="onAdd(event)">Add</button>
             </div>
         </header>
+        <ul>
+            <li>Eat</li>
+            <li>Drink</li>
+            <li>Eat</li>
+        </ul>
     </div>
 </body>
+<script>
+    const ul = document.querySelector('ul');
+    const itemList = document.getElementsByTagName('li');
+
+    // Initialization.
+    (function createXIconAndClickActiojn() {
+        for(const li of itemList) {
+            const span = document.createElement('span');
+            span.appendChild(document.createTextNode("\u00D7"));
+            span.className = 'close';
+            li.appendChild(span);
+
+            span.addEventListener('click', onXSelect);
+            li.addEventListener('click', onItemSelect);
+        }
+    })();
+
+    // Listener when item selected.
+    function onItemSelect($event) {
+        $event.target.classList.toggle('checked')
+    }
+
+    function onXSelect($event) {
+        $event.target.parentElement.style.display = 'none';
+    }
+
+    // Add new item in the list.
+    function onAdd($event) {
+        const inputValue = document.getElementsByTagName('input')[0].value;
+        if (inputValue === '') alert('You must alert something!');
+        else {
+            document.getElementsByTagName('input')[0].value = '';
+        }
+        const newList = document.createElement('li');
+        newList.innerText = inputValue;
+
+        const span = document.createElement('span');
+        span.appendChild(document.createTextNode("\u00D7"));
+        newList.appendChild(span);
+        span.className = 'close';
+        span.addEventListener('click', onXSelect);
+        newList.addEventListener('click', onItemSelect);
+
+        ul.appendChild(newList)
+    }
+</script>
 </html>
