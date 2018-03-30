@@ -137,7 +137,10 @@
     // Add new item in the list.
     function onAdd($event) {
         const inputValue = document.getElementsByTagName('input')[0].value;
-        if (inputValue === '') alert('You must alert something!');
+        if (inputValue === '') {
+            alert('You must alert something!');
+            return;
+        }
         else {
             document.getElementsByTagName('input')[0].value = '';
         }
