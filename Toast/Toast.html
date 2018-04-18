@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Toast App</title>
+    <title>Toast</title>
 </head>
 <style>
     button {
@@ -48,8 +48,8 @@
 <script>
     function showToast() {
         const toast = document.querySelector('.toast');
-        toast.classList.toggle('show');
-        setTimeout(function () {toast.classList.toggle('show')}, 2500);
+        Toast.classList.toggle('show');
+        setTimeout(function () {Toast.classList.toggle('show')}, 2500);
     }
 </script>
 </html>
