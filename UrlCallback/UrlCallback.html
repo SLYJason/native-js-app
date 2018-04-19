@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <title>Url Callback</title>
 </head>
+<style>
+    li {
+        padding: 1rem;
+    }
+</style>
 <body>
+    <h1>Url Callback</h1>
+    <p>Url: <code>https://jsonplaceholder.typicode.com/users?callback=parse</code> </p>
+</body>
 <script>
-    function parse(res) {
-        console.log(res)
+    // Only log 3 output.
+    function parse(results) {
+        const ul = document.createElement('ul')
+        results.forEach(res => {
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(`Name: ${res.name}, Email: ${res.email}`));
+            ul.appendChild(li);
+            document.getElementsByTagName('body')[0].appendChild(ul)
+        });
     }
 </script>
-</body>
-<script src="https://jsonplaceholder.typicode.com/posts?callback=parse"></script>
+<script src="https://jsonplaceholder.typicode.com/users?callback=parse"></script>
 </html>
