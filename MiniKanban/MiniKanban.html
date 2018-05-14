@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <title>Mini Kanban Board</title>
 </head>
-<style></style>
+<style>
+    h1 {
+        text-align: center;
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    section {
+        width: 15%;
+        display: block;
+        height: 10rem;
+        padding: 2rem;
+        margin: 1rem;
+        border: 2px solid black;
+    }
+</style>
 <body>
-    <h1 title="Kanban">Mini Kanban Board</h1>
+    <head>
+        <h1 title="Kanban">Mini Kanban Board</h1>
+    </head>
+    <main>
+        <section class="backlog">backlog</section>
+        <section class="defined">defined</section>
+        <section class="inprogess">inprogess</section>
+        <section class="qa">qa</section>
+        <section class="complete">complete</section>
+    </main>
+    <footer>
+        <button>Add ticket</button>
+    </footer>
 </body>
 </html>
