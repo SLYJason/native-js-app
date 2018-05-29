@@ -39,7 +39,7 @@
     </head>
     <main>
         <section class="backlog">backlog</section>
-        <section class="defined">defined</section>
+        <section class="defined" ondrop="drop(event)" ondragover="allowDrop(event)">defined</section>
         <section class="inprogess">inprogess</section>
         <section class="qa">qa</section>
         <section class="complete">complete</section>
@@ -60,8 +60,27 @@
         const ticket = document.createElement('div');
         ticket.innerText = ticketName;
         ticket.classList.add('ticket');
+        ticket.setAttribute('draggable', true);
+        ticket.setAttribute('id', ticketName);
+        ticket.addEventListener('dragstart', onDragStart);
         const backlog = document.getElementsByClassName('backlog')[0];
         backlog.appendChild(ticket);
+    }
+
+    function onDragStart(event) {
+        event.dataTransfer.setData('text', event.target.id);
+        console.log(event.dataTransfer.getData('text'));
+    }
+
+    function drop(event) {
+        console.log(event)
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
     }
 </script>
 </html>
