@@ -16,10 +16,21 @@
     section {
         width: 15%;
         display: block;
-        height: 10rem;
-        padding: 2rem;
+        height: 20rem;
+        padding: 1rem;
         margin: 1rem;
         border: 2px solid black;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+    }
+    section > .ticket {
+        margin: .5rem;
+        padding: 1rem;
+        border: .1rem solid black;
+        text-transform: capitalize;
+        letter-spacing: normal;
+        font-size: 150%;
     }
 </style>
 <body>
@@ -34,7 +45,23 @@
         <section class="complete">complete</section>
     </main>
     <footer>
-        <button>Add ticket</button>
+        <div>
+            <label for="ticket">Enter ticket name: </label>
+            <input id="ticket">
+        </div>
+        <button onclick="onTicketNameEntered()">Add ticket</button>
     </footer>
 </body>
+
+<script>
+    function onTicketNameEntered() {
+        const ticketName = document.getElementById('ticket').value;
+        if (!ticketName) return;
+        const ticket = document.createElement('div');
+        ticket.innerText = ticketName;
+        ticket.classList.add('ticket');
+        const backlog = document.getElementsByClassName('backlog')[0];
+        backlog.appendChild(ticket);
+    }
+</script>
 </html>
