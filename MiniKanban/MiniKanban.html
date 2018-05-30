@@ -38,11 +38,11 @@
         <h1 title="Kanban">Mini Kanban Board</h1>
     </head>
     <main>
-        <section class="backlog">backlog</section>
-        <section class="defined" ondrop="drop(event)" ondragover="allowDrop(event)">defined</section>
-        <section class="inprogess">inprogess</section>
-        <section class="qa">qa</section>
-        <section class="complete">complete</section>
+        <section class="backlog" ondrop="onDrop(event)" ondragover="allowDrop(event)">backlog</section>
+        <section class="defined" ondrop="onDrop(event)" ondragover="allowDrop(event)">defined</section>
+        <section class="inprogess" ondrop="onDrop(event)" ondragover="allowDrop(event)">inprogess</section>
+        <section class="qa" ondrop="onDrop(event)" ondragover="allowDrop(event)">qa</section>
+        <section class="complete" ondrop="onDrop(event)" ondragover="allowDrop(event)">complete</section>
     </main>
     <footer>
         <div>
@@ -69,17 +69,19 @@
 
     function onDragStart(event) {
         event.dataTransfer.setData('text', event.target.id);
-        console.log(event.dataTransfer.getData('text'));
+        // test only
+        // console.log(event.dataTransfer.getData('text'));
     }
 
-    function drop(event) {
-        console.log(event)
-        event.preventDefault();
+    function onDrop(event) {
+        // event.preventDefault();
         const data = event.dataTransfer.getData("text");
         event.target.appendChild(document.getElementById(data));
     }
 
     function allowDrop(event) {
+        // By default, data/elements cannot be dropped in other elements.
+        // To allow a drop, we must prevent the default handling of the element.
         event.preventDefault();
     }
 </script>
