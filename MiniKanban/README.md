@@ -2,4 +2,4 @@
 Five column: Backlog, Defined, In Progress, QA, Complete.
 
 ### Online Demo
-Codepen.
+Codepen: [Mini Kanban](https://codepen.io/SLYJA/pen/bKNjVM).
