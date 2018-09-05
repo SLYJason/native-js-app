@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="closeConnection()">Close Connection</button>
+    <div id="content"></div>
+</body>
+<script>
+    const url = "http://127.0.0.1:3000/stream";
+    const source = new EventSource(url);
+    const content = document.querySelector("#content");
+
+    source.onopen = function (event) {
+        const openMessage = document.createElement("p");
+        openMessage.innerHTML = "Connection Opened...";
+        content.appendChild(openMessage);
+    };
+
+    source.onmessage = function (event) {
+        const dataMessage = document.createElement("p");
+        dataMessage.innerHTML = event.data;
+        content.appendChild(dataMessage);
+    };
+
+    function closeConnection(event) {
+        source.close();
+        const closeMessage = document.createElement("p");
+        closeMessage.innerHTML = "Connection Closed...";
+        content.appendChild(closeMessage);
+        source.close();
+    }
+</script>
+</html>
